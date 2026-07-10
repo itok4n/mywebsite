@@ -15,15 +15,15 @@
       <ul>
         <li><a href="../index.html">ホーム</a></li>
         <li>
-          <a href="../notes/">ノート</a>
+          <a href="../notes/index.html">ノート</a>
           <ul>
-            <li><a href="../notes/物理学/">物理学</a></li>
-            <li><a href="../notes/数学/">数学</a></li>
-            <li><a href="../notes/プログラミング/">プログラミング</a></li>
+            <li><a href="../notes/物理学/index.html">物理学</a></li>
+            <li><a href="../notes/数学/index.html">数学</a></li>
+            <li><a href="../notes/プログラミング/index.html">プログラミング</a></li>
             <!-- 新しい分野はここに追加（各ページのサイドバーも同様に） -->
           </ul>
         </li>
-        <li><a href="./" class="active">持っている本</a></li>
+        <li><a href="./index.html" class="active">持っている本</a></li>
       </ul>
     </nav>
     <div class="sidebar-foot">最終更新：2026-07-11</div>
@@ -70,15 +70,27 @@
       <h3>物理学</h3>
       <div class="bookshelf">
         <button class="book" type="button"
-                data-title="（サンプル）書名をここに書く"
-                data-author="著者名"
-                data-pub="〇〇出版，2026"
+                data-title="流体力学1"
+                data-author="ランダウ=リフシッツ"
+                data-pub="東京図書，1993"
                 data-status="reading"
                 data-note="このボタンはサンプル．テンプレートをコピーして書き換える．">
           <span class="book-cover">
-            <img src="covers/sample.jpg" alt="" loading="lazy"
+            <img src="covers/ランダウ流体力学1.jpeg" alt="" loading="lazy"
                  onerror="this.parentElement.classList.add('no-image'); this.remove();">
-            <span class="book-cover-title">（サンプル）書名をここに書く</span>
+            <span class="book-cover-title">ランダウ流体力学1</span>
+          </span>
+        </button>
+        <button class="book" type="button"
+                data-title="流体力学2"
+                data-author="ランダウ=リフシッツ"
+                data-pub="東京図書，1994"
+                data-status="reading"
+                data-note="このボタンはサンプル．テンプレートをコピーして書き換える．">
+          <span class="book-cover">
+            <img src="covers/ランダウ流体力学1.jpeg" alt="" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-image'); this.remove();">
+            <span class="book-cover-title">ランダウ流体力学2</span>
           </span>
         </button>
         <!-- 物理学の本はここに追加 -->
@@ -92,6 +104,10 @@
       <h3>プログラミング</h3>
       <div class="bookshelf">
         <!-- プログラミングの本はここに追加 -->
+      </div>
+
+      <h3>読み物</h3>
+      <div class="bookshelf">
       </div>
 
     </main>
