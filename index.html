@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学習アーカイブ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <p class="site-title"><a href="index.html">学習アーカイブ</a></p>
+    <p class="site-subtitle">学んだことの記録と整理</p>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">ホーム</a></li>
+        <li>
+          <a href="notes/">ノート</a>
+          <ul>
+            <li><a href="notes/物理学/">物理学</a></li>
+            <li><a href="notes/数学/">数学</a></li>
+            <li><a href="notes/プログラミング/">プログラミング</a></li>
+            <!-- 新しい分野はここに追加（各ページのサイドバーも同様に） -->
+          </ul>
+        </li>
+        <li><a href="books/">持っている本</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-foot">最終更新：2026-07-11</div>
+  </aside>
+
+  <div class="main-area">
+    <main>
+
+      <h2>このサイトについて</h2>
+      <p>
+        学習した内容（PDF資料・書籍など）を自分用にまとめておくためのサイトです．
+        <a href="notes/">ノート</a>のページには学習ノートを分野ごとの階層で，
+        <a href="books/">持っている本</a>のページには所持している専門書等を本棚形式でまとめています．
+      </p>
+
+      <h2>更新履歴</h2>
+      <!-- 新しい更新は一番上に追加する -->
+      <ul class="entry-list">
+        <li>
+          <span class="entry-meta">2026-07-11</span>
+          <div class="entry-note">ノートを「ノート／物理学／電磁気学」のような分野別の階層構造に整理．持っている本を表紙画像付きの本棚形式に変更．</div>
+        </li>
+        <li>
+          <span class="entry-meta">2026-07-11</span>
+          <div class="entry-note">サイトを開設．</div>
+        </li>
+        <!-- ▼ 更新履歴のテンプレート（コピーして使う） ▼
+        <li>
+          <span class="entry-meta">YYYY-MM-DD</span>
+          <div class="entry-note">〇〇に関する資料を追加．</div>
+        </li>
+        -->
+      </ul>
+
+      <h2>使い方メモ</h2>
+      <ul>
+        <li>ノートは <code>notes/分野/小分野/index.html</code> の階層で整理する（例：<code>notes/物理学/電磁気学/</code>）．新しい小分野は既存のフォルダをコピーして作り，親ページの一覧にリンクを追加する．</li>
+        <li>PDFファイルは <code>pdfs/</code> ディレクトリに置き，各ノートページからリンクする．</li>
+        <li>本は <code>books/index.html</code> の本棚に追加する．表紙画像は <code>books/covers/</code> に置く．画像がない場合は書名入りの表紙が自動で表示される．表紙をクリックすると詳細が開く．</li>
+        <li>各ページのHTML内に，コピーして使えるテンプレートをコメントとして記載している．</li>
+        <li>VSCodeの拡張機能「Live Server」を入れると，保存のたびにブラウザで即確認できて便利．</li>
+      </ul>
+
+    </main>
+  </div>
+
+</body>
+</html>

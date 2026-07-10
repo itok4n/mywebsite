@@ -1,0 +1,435 @@
+/* ===================================================
+   学習まとめサイト 共通スタイル
+   左サイドバー＋メインコンテンツの2カラム構成
+   （github-nakasho.github.io / Just the Docs 風）
+   =================================================== */
+
+:root {
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --link: #1a5276;
+  --link-hover: #2e86c1;
+  --border: #ddd;
+  --bg: #ffffff;
+  --bg-sidebar: #f7f7f5;
+  --accent: #8b0000;
+  --sidebar-width: 250px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Georgia", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ---------- 2カラムレイアウト ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.4rem;
+}
+
+.main-area {
+  margin-left: var(--sidebar-width);
+  padding: 2.5rem 3rem 4rem;
+  max-width: 820px;
+}
+
+/* ---------- サイドバー：サイト名 ---------- */
+.site-title {
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.2rem;
+  font-weight: normal;
+}
+
+.site-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-subtitle {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- サイドバー：ナビゲーション ---------- */
+.sidebar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar nav > ul > li {
+  margin-bottom: 0.2rem;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 0.35rem 0.6rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-left: 3px solid transparent;
+  border-radius: 0 3px 3px 0;
+}
+
+.sidebar nav a:hover {
+  color: var(--link-hover);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar nav a.active {
+  border-left-color: var(--accent);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* 階層メニュー（蔵書の分野など） */
+.sidebar nav ul ul {
+  margin: 0.1rem 0 0.3rem;
+}
+
+.sidebar nav ul ul a {
+  padding-left: 1.6rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.sidebar nav ul ul a.active {
+  color: var(--text);
+}
+
+/* サイドバー下部の小さなリンク・注記 */
+.sidebar-foot {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ---------- 見出し ---------- */
+h2 {
+  font-size: 1.35rem;
+  font-weight: normal;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 0 0 1rem;
+  letter-spacing: 0.03em;
+}
+
+main h2 + h2,
+main * + h2 {
+  margin-top: 2.5rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+/* ---------- リンク ---------- */
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* ---------- 資料・文献リスト ---------- */
+.entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.entry-title {
+  font-size: 1.02rem;
+}
+
+.entry-meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.entry-note {
+  font-size: 0.92rem;
+  margin-top: 0.3rem;
+}
+
+/* タグ */
+.tag {
+  display: inline-block;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.05rem 0.45rem;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+/* ---------- 蔵書テーブル ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  font-weight: normal;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+/* 読書状況のラベル */
+.status {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.status.done     { color: #1e7e34; }
+.status.reading  { color: #b8860b; }
+.status.unread   { color: #999; }
+
+/* ---------- 絞り込みボックス ---------- */
+.filter-box {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 0.5rem 0 1rem;
+}
+
+.filter-box:focus {
+  outline: none;
+  border-color: var(--link-hover);
+}
+
+/* ---------- 本棚 ---------- */
+.bookshelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1.6rem 1.3rem;
+  align-items: end;
+  margin: 1.2rem 0 0.5rem;
+  padding: 0.4rem 0.6rem 1rem;
+  border-bottom: 6px solid #cfc7b8;
+}
+
+.bookshelf + h3 {
+  margin-top: 2.2rem;
+}
+
+/* 本（クリックで詳細が開くボタン） */
+.book {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.book-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 5 / 7;
+  background: #f3f0e9;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book:hover .book-cover,
+.book:focus-visible .book-cover {
+  transform: translateY(-5px);
+  box-shadow: 2px 7px 14px rgba(0, 0, 0, 0.25);
+}
+
+.book-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 表紙画像がないときは，書名を表紙風に表示する */
+.book-cover-title {
+  display: none;
+}
+
+.book-cover.no-image .book-cover-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.5rem;
+  border-top: 8px solid var(--accent);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--text);
+}
+
+/* ---------- 本の詳細ダイアログ ---------- */
+.book-dialog {
+  max-width: 560px;
+  width: calc(100% - 2.5rem);
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+.book-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.book-dialog-body {
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+}
+
+.book-dialog-cover {
+  flex: 0 0 150px;
+}
+
+.book-dialog-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.book-dialog-info h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.book-dialog-info dl {
+  margin: 0 0 0.8rem;
+  font-size: 0.92rem;
+}
+
+.book-dialog-info dt {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.book-dialog-info dd {
+  margin: 0 0 0.55rem;
+}
+
+.book-dialog-note {
+  margin: 0;
+  padding-top: 0.7rem;
+  border-top: 1px dotted var(--border);
+  font-size: 0.9rem;
+}
+
+.book-dialog-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0.2rem;
+}
+
+.book-dialog-close:hover {
+  color: var(--text);
+}
+
+/* ---------- フッター ---------- */
+footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ---------- スマートフォン対応 ----------
+   画面が狭いときはサイドバーを上部に積む */
+@media (max-width: 800px) {
+  body { font-size: 15px; }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;
+  }
+
+  .main-area {
+    margin-left: 0;
+    padding: 1.5rem 1.25rem 3rem;
+  }
+
+  th, td { padding: 0.45rem 0.4rem; }
+
+  .bookshelf {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1.2rem 0.9rem;
+  }
+
+  .book-dialog-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-dialog-cover {
+    flex: none;
+    width: 130px;
+  }
+}

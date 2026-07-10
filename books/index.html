@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>持っている本 | 学習アーカイブ</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <p class="site-title"><a href="../index.html">学習アーカイブ</a></p>
+    <p class="site-subtitle">学んだことの記録と整理</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">ホーム</a></li>
+        <li>
+          <a href="../notes/">ノート</a>
+          <ul>
+            <li><a href="../notes/物理学/">物理学</a></li>
+            <li><a href="../notes/数学/">数学</a></li>
+            <li><a href="../notes/プログラミング/">プログラミング</a></li>
+            <!-- 新しい分野はここに追加（各ページのサイドバーも同様に） -->
+          </ul>
+        </li>
+        <li><a href="./" class="active">持っている本</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-foot">最終更新：2026-07-11</div>
+  </aside>
+
+  <div class="main-area">
+    <main>
+
+      <h2>持っている本</h2>
+      <p>
+        所持している専門書等の本棚．分野ごとに並べている．
+        表紙をクリックすると詳細が開く．読書状況は
+        <span class="status done">読了</span>／<span class="status reading">読書中</span>／<span class="status unread">未読</span>
+        の3段階．
+      </p>
+
+      <!-- ==============================================
+           本の追加方法：
+           1. 表紙画像を books/covers/ に置く（例：covers/砂川電磁気学.jpg）．
+              画像がなくてもよい．その場合は書名入りの表紙が自動で表示される．
+           2. 下のテンプレートをコピーして，該当する分野の
+              <div class="bookshelf"> の中に貼り付け，内容を書き換える．
+
+           data-status は done（読了）／reading（読書中）／unread（未読）の3種類．
+
+           ▼ テンプレート ▼
+      <button class="book" type="button"
+              data-title="書名"
+              data-author="著者名"
+              data-pub="出版社，発行年"
+              data-status="unread"
+              data-note="ひとことメモ（任意）">
+        <span class="book-cover">
+          <img src="covers/ファイル名.jpg" alt="" loading="lazy"
+               onerror="this.parentElement.classList.add('no-image'); this.remove();">
+          <span class="book-cover-title">書名</span>
+        </span>
+      </button>
+
+           分野（h3の棚）を増やすときは，
+           <h3>分野名</h3> と <div class="bookshelf">…</div> のセットをコピーする．
+           ============================================== -->
+
+      <h3>物理学</h3>
+      <div class="bookshelf">
+        <button class="book" type="button"
+                data-title="（サンプル）書名をここに書く"
+                data-author="著者名"
+                data-pub="〇〇出版，2026"
+                data-status="reading"
+                data-note="このボタンはサンプル．テンプレートをコピーして書き換える．">
+          <span class="book-cover">
+            <img src="covers/sample.jpg" alt="" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-image'); this.remove();">
+            <span class="book-cover-title">（サンプル）書名をここに書く</span>
+          </span>
+        </button>
+        <!-- 物理学の本はここに追加 -->
+      </div>
+
+      <h3>数学</h3>
+      <div class="bookshelf">
+        <!-- 数学の本はここに追加 -->
+      </div>
+
+      <h3>プログラミング</h3>
+      <div class="bookshelf">
+        <!-- プログラミングの本はここに追加 -->
+      </div>
+
+    </main>
+  </div>
+
+  <!-- 本の詳細ダイアログ（表紙クリックで開く） -->
+  <dialog class="book-dialog" id="book-dialog">
+    <button class="book-dialog-close" id="book-dialog-close" type="button" aria-label="閉じる">×</button>
+    <div class="book-dialog-body">
+      <div class="book-dialog-cover" id="book-dialog-cover"></div>
+      <div class="book-dialog-info">
+        <h3 id="book-dialog-title"></h3>
+        <dl>
+          <dt>著者</dt>
+          <dd id="book-dialog-author"></dd>
+          <dt>出版社・年</dt>
+          <dd id="book-dialog-pub"></dd>
+          <dt>読書状況</dt>
+          <dd id="book-dialog-status"></dd>
+        </dl>
+        <p class="book-dialog-note" id="book-dialog-note"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    var dialog = document.getElementById('book-dialog');
+    var statusLabels = { done: '読了', reading: '読書中', unread: '未読' };
+
+    document.querySelectorAll('.book').forEach(function (book) {
+      book.addEventListener('click', function () {
+        document.getElementById('book-dialog-title').textContent = book.dataset.title || '';
+        document.getElementById('book-dialog-author').textContent = book.dataset.author || '—';
+        document.getElementById('book-dialog-pub').textContent = book.dataset.pub || '—';
+
+        var status = book.dataset.status || 'unread';
+        var statusEl = document.getElementById('book-dialog-status');
+        statusEl.innerHTML = '';
+        var span = document.createElement('span');
+        span.className = 'status ' + status;
+        span.textContent = statusLabels[status] || status;
+        statusEl.appendChild(span);
+
+        var noteEl = document.getElementById('book-dialog-note');
+        noteEl.textContent = book.dataset.note || '';
+        noteEl.style.display = book.dataset.note ? '' : 'none';
+
+        // 表紙は棚のものをそのまま複製して表示する
+        var coverSlot = document.getElementById('book-dialog-cover');
+        coverSlot.innerHTML = '';
+        coverSlot.appendChild(book.querySelector('.book-cover').cloneNode(true));
+
+        dialog.showModal();
+      });
+    });
+
+    document.getElementById('book-dialog-close').addEventListener('click', function () {
+      dialog.close();
+    });
+
+    // ダイアログの外側（背景）をクリックしたら閉じる
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) dialog.close();
+    });
+  </script>
+</body>
+</html>

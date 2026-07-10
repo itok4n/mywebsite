@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宇宙物理学 | 物理学 | ノート | 学習アーカイブ</title>
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <p class="site-title"><a href="../../../index.html">学習アーカイブ</a></p>
+    <p class="site-subtitle">学んだことの記録と整理</p>
+    <nav>
+      <ul>
+        <li><a href="../../../index.html">ホーム</a></li>
+        <li>
+          <a href="../../">ノート</a>
+          <ul>
+            <li><a href="../" class="active">物理学</a></li>
+            <li><a href="../../数学/">数学</a></li>
+            <li><a href="../../プログラミング/">プログラミング</a></li>
+            <!-- 新しい分野はここに追加（各ページのサイドバーも同様に） -->
+          </ul>
+        </li>
+        <li><a href="../../../books/">持っている本</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-foot">最終更新：2026-07-11</div>
+  </aside>
+
+  <div class="main-area">
+    <main>
+
+      <h2><a href="../../">ノート</a> / <a href="../">物理学</a> / 宇宙物理学</h2>
+      <p>
+        宇宙物理学に関するノートの一覧．
+        PDFファイルはサイト直下の <code>pdfs/</code> ディレクトリに置き，ここからリンクする．
+      </p>
+
+      <input type="text" class="filter-box" id="filter"
+             placeholder="タイトル・タグ・メモで絞り込み…">
+
+      <!-- ==============================================
+           ノートの追加方法：
+           下のテンプレートをコピーして <ul> の先頭に貼り付け，
+           内容を書き換える（新しいものほど上に置く）．
+
+           ▼ テンプレート ▼
+      <li>
+        <div class="entry-title">
+          <a href="../../../pdfs/ファイル名.pdf">ノートのタイトル</a>
+        </div>
+        <div class="entry-meta">
+          作成年など．
+          <span class="tag">タグ1</span><span class="tag">タグ2</span>
+        </div>
+        <div class="entry-note">
+          内容の要約や学んだことのメモをここに書く．
+        </div>
+      </li>
+           ============================================== -->
+
+      <ul class="entry-list" id="entry-list">
+        <!-- まだノートがない．追加するときは上のテンプレートをコピーする． -->
+      </ul>
+
+    </main>
+  </div>
+
+  <script>
+    // 入力に応じてリストを絞り込む（タイトル・メタ情報・メモの全文が対象）
+    document.getElementById('filter').addEventListener('input', function () {
+      var query = this.value.toLowerCase();
+      document.querySelectorAll('#entry-list > li').forEach(function (li) {
+        li.style.display = li.textContent.toLowerCase().includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
